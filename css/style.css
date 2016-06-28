@@ -1,0 +1,181 @@
+pre                             { margin-bottom:20px; }
+body{
+padding:0%;
+margin:0%;
+color: white;
+}
+.banner{
+	background:url(../images/banner.jpg) no-repeat 0px 0px;
+	background-size:cover;
+	min-height:700px;
+}
+/* form styling */
+#form-container                { background:#2f2f2f; margin-bottom:20px;
+    border-radius:5px; }
+#form-container .page-header   { background:#D3564A; margin:0; padding:0px; 
+    border-top-left-radius:5px; border-top-right-radius:5px; }
+#form-container .register-page-header {background:#D3564A; margin:0;
+    border-top-left-radius:5px; border-top-right-radius:5px; }
+
+.submitStyle{
+margin-top: 10%;
+}
+
+
+#signup-form            { position:relative; min-height:300px; overflow:hidden; padding:30px; }
+#register-form            { position:relative; min-height:50px; overflow:hidden; padding-bottom: 6%; }
+#login-form {
+    position: relative;
+    min-height: 250px;
+    overflow: hidden;
+    padding: 15% 5% 0% 5%;
+}
+#forgot-form{
+	position: relative;
+    min-height: 200px;
+    overflow: hidden;
+    padding: 30px;
+
+}
+.red{
+color:red;
+}
+.logo {
+	float: left;
+}
+.logo a {
+	display: block;
+}
+.forgotPwd{
+	cursor:pointer;
+	text-decoration:underline;
+	font-weight:bold;
+	font-size:13px;
+}
+.dropdown-menu>ul>li>a:hover
+{
+background-color:#D3564A;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+    color: #fff;
+    background-color: #4A211D !important;
+}
+/* BASIC STYLINGS
+============================================================================= */
+/* numbered buttons */
+#status-buttons                 {     margin-top: 1%; }
+#status-buttons a               { color:#FFF; display:inline-block; font-size:20px; margin-right:10px; text-align:center; text-transform:uppercase; }
+#status-buttons a:hover         { text-decoration:none; }
+#status-buttons span          
+ {
+	display: block;
+    height: 100px;
+    margin: 0px auto 10px;
+    padding-top: 35%;
+    width: 100px;
+    border-radius: 50%;
+	 background:#545454;
+ }
+
+/* active buttons */
+#status-buttons a.active span   { background:#00BC8C; }
+
+/* ANIMATION STYLINGS
+============================================================================= */
+/* basic styling for entering and leaving */
+/* left and right added to ensure full width */
+#form-views.ng-enter,
+#form-views.ng-leave      { position:absolute; left:30px; right:30px;
+    transition:0.5s all ease; -moz-transition:0.5s all ease; -webkit-transition:0.5s all ease; 
+}
+    
+/* enter animation */
+#form-views.ng-enter            { 
+    -webkit-animation:slideInRight 0.5s both ease;
+	-moz-animation:slideInRight 0.5s both ease;
+	animation:slideInRight 0.5s both ease; 
+}
+
+/* leave animation */
+#form-views.ng-leave            { 
+    -webkit-animation:slideOutLeft 0.5s both ease;
+	-moz-animation:slideOutLeft 0.5s both ease;
+	animation:slideOutLeft 0.5s both ease;   
+}
+
+.logo {
+	float: left;
+}
+.logo a {
+	display: block;
+}
+/* ANIMATIONS
+============================================================================= */
+/* slide out to the left */
+@keyframes slideOutLeft {
+	to 		{ transform: translateX(-200%); }
+}
+@-moz-keyframes slideOutLeft {	
+	to 		{ -moz-transform: translateX(-200%); }
+}
+@-webkit-keyframes slideOutLeft {
+	to 		{ -webkit-transform: translateX(-200%); }
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+	from 	{ transform:translateX(200%); }
+	to 		{ transform: translateX(0); }
+}
+@-moz-keyframes slideInRight {
+	from 	{ -moz-transform:translateX(200%); }
+	to 		{ -moz-transform: translateX(0); }
+}
+@-webkit-keyframes slideInRight {
+	from 	{ -webkit-transform:translateX(200%); }
+	to 		{ -webkit-transform: translateX(0); }
+}
+/*--------------crop recomendation----------------------*/
+
+	.modal-dialog {
+    width: 800px !important;
+}
+.nav-tabs.nav-justified>li>a {
+    border: 1px solid #ddd !important;
+    border-radius: 4px 4px 0 0;
+}
+.nav-tabs.nav-justified>.active>a, .nav-tabs.nav-justified>.active>a:hover, .nav-tabs.nav-justified>.active>a:focus {
+    border-bottom-color: #fff;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    color: #555;
+    cursor: default;
+    background-color: #D3564A !important;
+	}
+.modaltabsColor{	
+	color: white;
+	}
+.nav-tabs>li.active>a{	
+	color: white !important;
+	}
+.rating {
+    color: #a9a9a9;
+    margin: 0;
+    padding: 0;
+}
+ul.rating {
+    display: inline-block;
+}
+.rating li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 1px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+.rating .filled {
+    color: red;
+}
+	
+

@@ -1,0 +1,103 @@
+
+<div class="row banner">
+	<div class="header">
+		<div class="container">	
+			<div class="logo">
+				<a href="#"><img src="images/logos.png" alt=""/></a>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="col-sm-6 pull-right">
+		  <div id="form-container">	  
+			  <div class="register-page-header text-center">
+				  <div class="col-sm-12 page-header col-xs-12"><center><h1>Sign Up</h1></center></div>
+			  </div>
+			  
+			  <!-- use ng-submit to catch the form submission and use our Angular function -->
+			  <form id="signup-form" class="form-horizontal">
+				  <div class="form-group">
+					<label for="name" class="control-label col-sm-4">User Name</label>
+					 <div class="col-sm-8">      
+						<input type="text" class="form-control" name="name" ng-model="registerFormData.name">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="pw1" class="control-label col-sm-4">Password</label>
+					 <div class="col-sm-8">      
+						<input type="password" class="form-control" id="pw1" name="pw1" ng-model="registerFormData.password">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="pw2" class="control-label col-sm-4">Confirm Password</label>
+					 <div class="col-sm-8">      
+						<input type="password" id="pw2" class="form-control" name="pw2" required ng-model="registerFormData.confirmPassword" ng-blur="pwdCheck(registerFormData)"/>
+					</div>
+					<div class="col-sm-8 col-sm-offset-4 red" ng-show="pwdError">password mismatch</div>
+				</div>
+				<div class="form-group">
+				  <label for="sel1" class="control-label col-sm-4">Join As:</label>
+					  <div class="col-sm-8"> 
+						  <select class="form-control" id="sel1">
+							<option>Farmer</option>
+							<option>Buyer</option>
+							<option>Seller</option>							
+						  </select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="email" class="control-label col-sm-4">E-mail</label>
+					 <div class="col-sm-8">      
+						<input type="text" class="form-control" name="email" ng-model="registerFormData.email">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="number" class="control-label col-sm-4">State</label>
+					 <div class="col-sm-8">      
+						<input type="text" class="form-control" name="state" ng-model="registerFormData.state">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="number" class="control-label col-sm-4">District</label>
+					<div class="col-sm-8">      
+						<input type="text" class="form-control" name="distt" ng-model="registerFormData.District">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="number" class="control-label col-sm-4">Tehsil</label>
+					<div class="col-sm-8">      
+						<input type="text" class="form-control" name="Tehsil" ng-model="registerFormData.Tehsil">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="number" class="control-label col-sm-4">Village</label>
+					<div class="col-sm-8">      
+						<input type="text" class="form-control" name="Village" ng-model="registerFormData.Village">
+					</div>
+				</div>
+				<div class="form-group row submitStyle">
+				<div class="col-sm-12 col-xs-12">
+					<button class="btn btn-block btn-success" ng-click="registerFunc(registerFormData)"> Regsiter</button>
+				</div>
+				</div>
+				  
+			  </form>
+			  <form id="register-form">
+				  <div class="form-group">
+						<div class="col-sm-12 col-xs-12">
+							<button class="btn btn-block btn-info" ui-sref="index">Already an Account ? Sign in</button>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12 col-xs-12">
+							<button class="btn btn-block btn-info" ui-sref="dashboard.userProfile">Dashboard try</button>
+						</div>
+					</div>
+			  </form>
+		  
+		  </div>
+		</div>
+	</div>
+</div>
+

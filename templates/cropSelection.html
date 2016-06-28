@@ -1,0 +1,194 @@
+<div class="container-fluid" style="background-color: #2F2F2F;"> 
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">One Vill</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                  <a href="void();" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Agriculture Services <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a ng-click="dashboardCropSelection()">Crop Selection</a></li>
+                    <li><a href="">Crop Life Cycle Management</a></li>
+                    <li><a href="">Pest Library</a></li>                    
+                  </ul>
+                </li>
+            <li><a ng-click="dashboardScreen()">Dashboard</a></li>
+            <li><a href="#">Welcome Nikhil</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+<div class="container" style="color:white;margin-top:3%;background-color: #2F2F2F;">
+  <h2>Crop Recommendation</h2>     
+  <div class="pull-right"><span>Search:</span><input type="text" class="form-control" ng-model="searchText"></div>
+  <table class="table table-bordered">
+    <thead style="background-color: black;">
+      <tr>
+        <th><center>Image</center></th>
+        <th><center>Crop</center></th>
+        <th><center>Season</center></th>
+		<th><center>Soil</center></th>
+        <th><center>Irrigation</center></th>
+		 <th><center>risk</center></th>	
+      </tr>
+    </thead>
+	<tbody>
+      <tr ng-repeat="(index,product) in products | filter:searchText" data-toggle="modal" data-target="#myModel" ng-click="edit(index)">
+        <td><img src={{product.icon}} /></td>
+        <td style="padding-top: 2%;text-align: center;">{{product.crop}}</td>
+        <td style="padding-top: 2%;text-align: center;">{{product.season}}</td>
+		<td style="padding-top: 2%;text-align: center;">{{product.soil}}</td>
+		<td style="padding-top: 2%;text-align: center;">{{product.irrigation}}</td>	
+		<td style="padding-top: 2%;text-align: center;"><button class="btn riskColor{{product.risk}}">{{product.risk}}</button></td>	
+      </tr>
+	</tbody>
+  </table>
+    <div id="myModel" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #D3564A !important;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" style="color:white">Total Analysis</h4>
+      </div>
+      <div class="modal-body modalColor" style="background-color: #2F2F2F;">
+		<div class="row">
+			<div class="col-sm-12">
+				<!--<ul class="nav nav-tabs">
+				  <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+				  <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+				  <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+				</ul>-->
+				<ul class="nav nav-tabs nav-justified">
+				  <li class="active"><a data-toggle="tab" class="modaltabsColor" href="#home">Pre Season</a></li>
+				  <li><a data-toggle="tab" class="modaltabsColor" href="#menu1">In Season</a></li>
+				  <li><a data-toggle="tab" class="modaltabsColor" href="#menu2">Post Harvest</a></li>
+				</ul>
+
+				<div class="tab-content" style="border: 1px solid white;">
+				  <div id="home" class="tab-pane fade in active">
+					 <form ng-show="cropForm"  ng-submit="cropSelection(village)" class="form-horizontal" role="form" style="color: white;margin: 5% 0px;">
+						<div class="form-group">
+						  <label for="input2" class="col-sm-4 control-label">Village</label>
+						  <div class="col-sm-6">
+								<select id="input2" class="form-control" ng-model="village" required>
+									<option value="">select Village</option>
+									<option ng-repeat="item in villages" value="{{item.name}}">{{item.name}}</option>
+								</select>
+						  </div>
+						</div>
+						<div class="form-group">
+						  <label for="input2" class="col-sm-4 control-label">Season</label>
+						  <div class="col-sm-6">
+								<input type="text" ng-disabled="true" class="form-control"  ng-model="crop"/>
+						  </div>
+						</div>
+						<div class="form-group">
+						  <label for="input2" class="col-sm-4 control-label">Season</label>
+						  <div class="col-sm-6">
+								<input type="text" ng-disabled="true" class="form-control"  ng-model="season"/>
+						  </div>
+						</div>
+						<div class="form-group">
+						  <center><button type="submit" class="btn btn-success">Submit</button></center>
+						</div>	
+						
+						</form>
+						<div ng-show="cropResult">
+							<div class="col-sm-12" style="color: white;margin: 5% 0px;">
+								<div class="col-sm-12">
+									<h3>Soil Test result for <span ng-model="villageSelected">{{villageSelected}}</span> village</h3>
+									<table class="table table-bordered">
+										<thead style="background-color: black;">										
+										  <tr>
+											<th>Component</th>											
+											<th>Actual Quantity</th>
+											<th>Predictive Quantity</th>											
+										  </tr>
+										</thead>
+										<tbody>
+										  <tr ng-repeat="cropSelect in cropSelectionData">
+											<td>{{cropSelect.comp}}</td>											
+											<td>{{cropSelect.aqty}}<span>kg</span></td>
+											<td>{{cropSelect.qty}}<span>kg</span></td>
+										  </tr>
+										</tbody>
+									 </table>
+									 <div><center><button type="submit" ng-click="cropSelection()" class="btn btn-warning">Back</button></center></div>
+								</div>
+							</div>						
+						</div>
+				  </div>
+				  <div id="menu1" class="tab-pane fade">
+					<div class="col-sm-12" style="color: white;margin: 5% 0px;">
+								<div class="col-sm-12">									
+									<table class="table table-bordered">
+										<thead style="background-color: black;">										
+										  <tr>
+											<th>Days After Sowing</th>											
+											<th>Input Details</th>
+											<th>Demo Plot</th>
+											<th>Source</th>												
+										  </tr>
+										</thead>
+										<tbody>
+										  <tr ng-repeat="inSeason in inSeasons">
+											<td>{{inSeason.days}}</td>											
+											<td>{{inSeason.input}}<span>kg</span></td>
+											<td><center><span style="font-size: 20px;" class="glyphicon glyphicon-map-marker"></span></center></td>
+											<td>{{inSeason.source}}<span>kg</span></td>
+										  </tr>
+										</tbody>
+									 </table>									
+								</div>
+							</div>
+				  </div>
+				  <div id="menu2" class="tab-pane fade">
+					<div class="col-sm-12" style="color: white;margin: 5% 0px;">
+								<div class="col-sm-12">									
+									<table class="table table-bordered">
+										<thead style="background-color: black;">										
+										  <tr>
+											<th>Farmer Id</th>											
+											<th>Cultivated crop</th>
+											<th>FeedBack</th>																							
+										  </tr>
+										</thead>
+										<tbody>
+										  <tr ng-repeat="inSeason in inSeasons">
+											<td>{{inSeason.days}}</td>											
+											<td>{{inSeason.input}}<span>kg</span></td>
+											<td><center><span style="font-size: 20px;"  class="glyphicon glyphicon-edit"></span></center></td>											
+										  </tr>
+										</tbody>
+									 </table>									
+								</div>
+							</div>
+				</div>
+			</div>
+		</div>
+      </div>
+      <div class="modal-footer"style="background-color: #D3564A !important;">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+<div>
